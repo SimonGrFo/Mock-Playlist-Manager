@@ -1,6 +1,9 @@
 package com.example.musicservice.controller;
 
+import com.example.musicservice.model.Playlist;
+import com.example.musicservice.model.Track;
 import com.example.musicservice.service.LastFmService;
+import com.example.musicservice.service.PlaylistService;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,26 +15,24 @@ import reactor.core.publisher.Mono;
 public class LastFmController {
 
     private final LastFmService lastFmService;
+    private final PlaylistService playlistService;
 
-    public LastFmController(LastFmService lastFmService) {
+    public LastFmController(LastFmService lastFmService, PlaylistService playlistService) {
         this.lastFmService = lastFmService;
-    }
-
-    @GetMapping("/search/album")
-    public Mono<ResponseEntity<String>> searchAlbum(@RequestParam @NotBlank String album) {
-        return lastFmService.searchAlbum(album)
-                .map(ResponseEntity::ok);
-    }
-
-    @GetMapping("/search/artist")
-    public Mono<ResponseEntity<String>> searchArtist(@RequestParam @NotBlank String artist) {
-        return lastFmService.searchArtist(artist)
-                .map(ResponseEntity::ok);
+        this.playlistService = playlistService;
     }
 
     @GetMapping("/search/track")
     public Mono<ResponseEntity<String>> searchTrack(@RequestParam @NotBlank String track) {
         return lastFmService.searchTrack(track)
-                .map(ResponseEntity::ok);
+                .map(foundTrack -> {
+                    playlistService.addTrackToPlaylist(foundTrack);  // Save the track in the playlist
+                    return ResponseEntity.ok("Track added to playlist: " + foundTrack.getName());
+                });
+    }
+
+    @GetMapping("/playlist")
+    public ResponseEntity<Playlist> getPlaylist() {
+        return ResponseEntity.ok(playlistService.getPlaylist());
     }
 }

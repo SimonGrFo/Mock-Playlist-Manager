@@ -11,6 +11,5 @@ public class MusicserviceApplication {
 	}
 
 }
-// Search for an album: http://localhost:8080/search/album?album=
-// Search for an artist: http://localhost:8080/search/artist?artist=
-// Search for a track: http://localhost:8080/search/track?track=
+// Add a track into playlist: http://localhost:8080/search/track?track=
+// View the tracks in the playlist http://localhost:8080/playlist

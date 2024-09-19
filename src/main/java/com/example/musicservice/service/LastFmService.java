@@ -1,5 +1,7 @@
 package com.example.musicservice.service;
 
+import com.example.musicservice.model.Track;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -64,8 +66,25 @@ public class LastFmService {
         return makeApiCall("artist.search", params);
     }
 
-    public Mono<String> searchTrack(String trackName) {
+    public Mono<Track> searchTrack(String trackName) {
         Map<String, String> params = Map.of("track", trackName);
-        return makeApiCall("track.search", params);
+
+        return makeApiCall("track.search", params)
+                .map(response -> {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONObject trackObject = jsonObject
+                            .getJSONObject("results")
+                            .getJSONObject("trackmatches")
+                            .getJSONArray("track")
+                            .getJSONObject(0);
+
+                    Track track = new Track();
+                    track.setName(trackObject.getString("name"));
+                    track.setArtist(trackObject.getString("artist"));
+                    track.setUrl(trackObject.getString("url"));
+
+                    return track;
+                });
     }
+
 }
