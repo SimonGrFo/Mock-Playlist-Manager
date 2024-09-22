@@ -1,18 +1,29 @@
 package com.example.musicservice.service;
 
-import com.example.musicservice.model.Playlist;
 import com.example.musicservice.model.Track;
-import lombok.Getter;
+import com.example.musicservice.repository.TrackRepository;
 import org.springframework.stereotype.Service;
 
-@Getter
+import java.util.List;
+
 @Service
 public class PlaylistService {
 
-    private final Playlist playlist = new Playlist();
+    private final TrackRepository trackRepository;
 
-    public void addTrackToPlaylist(Track track) {
-        playlist.addTrack(track);
+    public PlaylistService(TrackRepository trackRepository) {
+        this.trackRepository = trackRepository;
     }
 
+    public void addTrackToPlaylist(Track track) {
+        trackRepository.save(track);
+    }
+
+    public List<Track> getPlaylist() {
+        return trackRepository.findAll();
+    }
+
+    public void deleteTrack(Long id) {
+        trackRepository.deleteById(id);
+    }
 }

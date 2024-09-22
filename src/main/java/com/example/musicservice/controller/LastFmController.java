@@ -1,7 +1,5 @@
 package com.example.musicservice.controller;
 
-import com.example.musicservice.model.Playlist;
-import com.example.musicservice.model.Track;
 import com.example.musicservice.service.LastFmService;
 import com.example.musicservice.service.PlaylistService;
 import jakarta.validation.constraints.NotBlank;
@@ -32,7 +30,7 @@ public class LastFmController {
     }
 
     @GetMapping("/playlist")
-    public ResponseEntity<Playlist> getPlaylist() {
+    public ResponseEntity<?> getPlaylist() {
         return ResponseEntity.ok(playlistService.getPlaylist());
     }
 }
