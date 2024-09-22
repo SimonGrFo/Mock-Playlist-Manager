@@ -53,7 +53,10 @@ public class LastFmService {
                 .retrieve()
                 .bodyToMono(String.class)
                 .doOnError(e -> logger.error("Error occurred during API call: {}", e.getMessage()))
-                .onErrorResume(e -> Mono.just("Error with API call."));
+                .onErrorResume(e -> {
+                    logger.warn("Error occurred while calling Last.fm API: {}", e.getMessage());
+                    return Mono.just("Error with API call.");
+                });
     }
 
     public Mono<String> searchAlbum(String albumName) {
@@ -86,5 +89,4 @@ public class LastFmService {
                     return track;
                 });
     }
-
 }

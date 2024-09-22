@@ -18,12 +18,7 @@ public class PlaylistService {
     public void addTrackToPlaylist(Track track) {
         trackRepository.save(track);
     }
-
     public List<Track> getPlaylist() {
         return trackRepository.findAll();
-    }
-
-    public void deleteTrack(Long id) {
-        trackRepository.deleteById(id);
     }
 }
