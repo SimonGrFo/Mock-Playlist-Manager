@@ -17,6 +17,8 @@ public class LastFmService {
 
     private static final Logger logger = LoggerFactory.getLogger(LastFmService.class);
 
+    private static final String TRACK_SEARCH_METHOD = "track.search";
+
     @Value("${lastfm.api.key}")
     private String apiKey;
 
@@ -59,20 +61,10 @@ public class LastFmService {
                 });
     }
 
-    public Mono<String> searchAlbum(String albumName) {
-        Map<String, String> params = Map.of("album", albumName);
-        return makeApiCall("album.search", params);
-    }
-
-    public Mono<String> searchArtist(String artistName) {
-        Map<String, String> params = Map.of("artist", artistName);
-        return makeApiCall("artist.search", params);
-    }
-
     public Mono<Track> searchTrack(String trackName) {
         Map<String, String> params = Map.of("track", trackName);
 
-        return makeApiCall("track.search", params)
+        return makeApiCall(TRACK_SEARCH_METHOD, params)
                 .map(response -> {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONObject trackObject = jsonObject
@@ -87,6 +79,8 @@ public class LastFmService {
                     track.setUrl(trackObject.getString("url"));
 
                     return track;
-                });
+                })
+                .doOnSuccess(track -> logger.info("Track search successful: {}", track.getName()))
+                .doOnError(e -> logger.error("Track search failed: {}", e.getMessage()));
     }
 }

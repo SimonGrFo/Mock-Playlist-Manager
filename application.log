@@ -1,33 +1,131 @@
-2024-09-22 17:30:38 - Starting MusicserviceApplication using Java 17.0.12 with PID 15312 (C:\Users\simgr\Downloads\musicJavaWebb\build\classes\java\main started by simgr in C:\Users\simgr\Downloads\musicJavaWebb)
-2024-09-22 17:30:38 - No active profile set, falling back to 1 default profile: "default"
-2024-09-22 17:30:38 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-09-22 17:30:38 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-09-22 17:30:39 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-09-22 17:30:39 - Finished Spring Data repository scanning in 167 ms. Found 1 JPA repository interface.
-2024-09-22 17:30:41 - Tomcat initialized with port 8080 (http)
-2024-09-22 17:30:41 - Starting service [Tomcat]
-2024-09-22 17:30:41 - Starting Servlet engine: [Apache Tomcat/10.1.28]
-2024-09-22 17:30:41 - Initializing Spring embedded WebApplicationContext
-2024-09-22 17:30:41 - Root WebApplicationContext: initialization completed in 2730 ms
-2024-09-22 17:30:41 - HikariPool-1 - Starting...
-2024-09-22 17:30:41 - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2024-09-22 17:30:41 - HikariPool-1 - Start completed.
-2024-09-22 17:30:41 - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2024-09-22 17:30:41 - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-09-22 17:30:41 - HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-09-22 17:30:41 - HHH000026: Second-level cache disabled
-2024-09-22 17:30:42 - No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-09-22 17:30:42 - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-09-22 17:30:43 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-09-22 17:30:43 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-09-22 17:30:44 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-09-22 17:30:44 - LiveReload server is running on port 35729
-2024-09-22 17:30:45 - Tomcat started on port 8080 (http) with context path '/'
-2024-09-22 17:30:45 - Started MusicserviceApplication in 7.506 seconds (process running for 8.178)
-2024-09-22 17:30:49 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-09-22 17:30:49 - Initializing Servlet 'dispatcherServlet'
-2024-09-22 17:30:49 - Completed initialization in 2 ms
-2024-09-22 17:30:49 - Fetching the playlist
-2024-09-22 17:30:55 - Searching for track: the flag is raised
-2024-09-22 17:30:56 - Track added to playlist: The Flag is Raised
-2024-09-22 17:31:28 - Fetching the playlist
+2024-09-23 17:39:31 - Starting MusicserviceApplication using Java 17.0.12 with PID 5540 (C:\Users\simgr\Downloads\musicJavaWebb\build\classes\java\main started by simgr in C:\Users\simgr\Downloads\musicJavaWebb)
+2024-09-23 17:39:31 - No active profile set, falling back to 1 default profile: "default"
+2024-09-23 17:39:31 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-09-23 17:39:31 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-09-23 17:39:32 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23 17:39:32 - Finished Spring Data repository scanning in 137 ms. Found 1 JPA repository interface.
+2024-09-23 17:39:33 - Tomcat initialized with port 8080 (http)
+2024-09-23 17:39:33 - Starting service [Tomcat]
+2024-09-23 17:39:33 - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-23 17:39:33 - Initializing Spring embedded WebApplicationContext
+2024-09-23 17:39:33 - Root WebApplicationContext: initialization completed in 1490 ms
+2024-09-23 17:39:33 - HikariPool-1 - Starting...
+2024-09-23 17:39:33 - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-09-23 17:39:33 - HikariPool-1 - Start completed.
+2024-09-23 17:39:33 - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-09-23 17:39:33 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23 17:39:33 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-23 17:39:33 - HHH000026: Second-level cache disabled
+2024-09-23 17:39:34 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23 17:39:34 - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-23 17:39:34 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-23 17:39:34 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23 17:39:35 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-23 17:39:35 - LiveReload server is running on port 35729
+2024-09-23 17:39:35 - Tomcat started on port 8080 (http) with context path '/'
+2024-09-23 17:39:35 - Started MusicserviceApplication in 4.224 seconds (process running for 4.637)
+2024-09-23 17:39:41 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-23 17:39:41 - Initializing Servlet 'dispatcherServlet'
+2024-09-23 17:39:41 - Completed initialization in 1 ms
+2024-09-23 17:39:41 - Searching for track: girls just want to have fun
+2024-09-23 17:39:42 - Track search successful: Girls Just Want to Have Fun
+2024-09-23 17:39:42 - Track added to playlist: Girls Just Want to Have Fun
+2024-09-23 17:39:43 - Searching for track: girls just want to have fun
+2024-09-23 17:39:43 - Track search successful: Girls Just Want to Have Fun
+2024-09-23 17:39:43 - Track added to playlist: Girls Just Want to Have Fun
+2024-09-23 17:39:44 - Searching for track: girls just want to have fun
+2024-09-23 17:39:44 - Track search successful: Girls Just Want to Have Fun
+2024-09-23 17:39:44 - Track added to playlist: Girls Just Want to Have Fun
+2024-09-23 17:39:51 - Fetching the playlist
+2024-09-23 17:40:07 - Searching for track: earthmover
+2024-09-23 17:40:07 - Track search successful: Earthmover
+2024-09-23 17:40:07 - Track added to playlist: Earthmover
+2024-09-23 17:40:08 - Searching for track: earthmover
+2024-09-23 17:40:09 - Track search successful: Earthmover
+2024-09-23 17:40:09 - Track added to playlist: Earthmover
+2024-09-23 17:40:20 - Searching for track: july yung lean
+2024-09-23 17:40:20 - Track search successful: July
+2024-09-23 17:40:20 - Track added to playlist: July
+2024-09-23 17:40:28 - Searching for track: red
+2024-09-23 17:40:29 - Track search successful: Dark Red
+2024-09-23 17:40:29 - Track added to playlist: Dark Red
+2024-09-23 17:40:33 - Searching for track: red king crimson
+2024-09-23 17:40:33 - Track search successful: Red
+2024-09-23 17:40:33 - Track added to playlist: Red
+2024-09-23 17:40:37 - Searching for track: girls just want to have fun
+2024-09-23 17:40:37 - Track search successful: Girls Just Want to Have Fun
+2024-09-23 17:40:37 - Track added to playlist: Girls Just Want to Have Fun
+2024-09-23 17:40:40 - Searching for track: girls just want to have fun bladee
+2024-09-23 17:40:41 - Track search successful: Girls just want to have fun
+2024-09-23 17:40:41 - Track added to playlist: Girls just want to have fun
+2024-09-23 17:40:43 - Fetching the playlist
+2024-09-23 17:44:18 - Starting MusicserviceApplication using Java 17.0.12 with PID 14356 (C:\Users\simgr\Downloads\musicJavaWebb\build\classes\java\main started by simgr in C:\Users\simgr\Downloads\musicJavaWebb)
+2024-09-23 17:44:18 - No active profile set, falling back to 1 default profile: "default"
+2024-09-23 17:44:18 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-09-23 17:44:18 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-09-23 17:44:19 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23 17:44:19 - Finished Spring Data repository scanning in 113 ms. Found 1 JPA repository interface.
+2024-09-23 17:44:20 - Tomcat initialized with port 8080 (http)
+2024-09-23 17:44:20 - Starting service [Tomcat]
+2024-09-23 17:44:20 - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-23 17:44:20 - Initializing Spring embedded WebApplicationContext
+2024-09-23 17:44:20 - Root WebApplicationContext: initialization completed in 1388 ms
+2024-09-23 17:44:20 - HikariPool-1 - Starting...
+2024-09-23 17:44:20 - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-09-23 17:44:20 - HikariPool-1 - Start completed.
+2024-09-23 17:44:20 - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-09-23 17:44:20 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23 17:44:20 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-23 17:44:20 - HHH000026: Second-level cache disabled
+2024-09-23 17:44:20 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23 17:44:20 - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-23 17:44:21 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-23 17:44:21 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23 17:44:21 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-23 17:44:22 - LiveReload server is running on port 35729
+2024-09-23 17:44:22 - Tomcat started on port 8080 (http) with context path '/'
+2024-09-23 17:44:22 - Started MusicserviceApplication in 4.03 seconds (process running for 4.416)
+2024-09-23 17:44:24 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-23 17:44:24 - Initializing Servlet 'dispatcherServlet'
+2024-09-23 17:44:24 - Completed initialization in 1 ms
+2024-09-23 17:44:24 - Fetching the playlist
+2024-09-23 17:45:19 - Searching for track: the queen is dead the smiths
+2024-09-23 17:45:20 - Track search successful: The Queen Is Dead - 2011 Remaster
+2024-09-23 17:45:20 - Track added to playlist: The Queen Is Dead - 2011 Remaster
+2024-09-23 17:49:10 - Starting MusicserviceApplication using Java 17.0.12 with PID 1656 (C:\Users\simgr\Downloads\musicJavaWebb\build\classes\java\main started by simgr in C:\Users\simgr\Downloads\musicJavaWebb)
+2024-09-23 17:49:10 - No active profile set, falling back to 1 default profile: "default"
+2024-09-23 17:49:10 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-09-23 17:49:10 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-09-23 17:49:10 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-23 17:49:10 - Finished Spring Data repository scanning in 118 ms. Found 1 JPA repository interface.
+2024-09-23 17:49:11 - Tomcat initialized with port 8080 (http)
+2024-09-23 17:49:11 - Starting service [Tomcat]
+2024-09-23 17:49:11 - Starting Servlet engine: [Apache Tomcat/10.1.28]
+2024-09-23 17:49:11 - Initializing Spring embedded WebApplicationContext
+2024-09-23 17:49:11 - Root WebApplicationContext: initialization completed in 1381 ms
+2024-09-23 17:49:11 - HikariPool-1 - Starting...
+2024-09-23 17:49:11 - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-09-23 17:49:11 - HikariPool-1 - Start completed.
+2024-09-23 17:49:11 - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-09-23 17:49:11 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-23 17:49:11 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-09-23 17:49:11 - HHH000026: Second-level cache disabled
+2024-09-23 17:49:12 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-09-23 17:49:12 - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-23 17:49:12 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-09-23 17:49:12 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-23 17:49:13 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-23 17:49:13 - LiveReload server is running on port 35729
+2024-09-23 17:49:13 - Tomcat started on port 8080 (http) with context path '/'
+2024-09-23 17:49:13 - Started MusicserviceApplication in 3.801 seconds (process running for 4.172)
+2024-09-23 17:49:18 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-23 17:49:18 - Initializing Servlet 'dispatcherServlet'
+2024-09-23 17:49:18 - Completed initialization in 1 ms
+2024-09-23 17:49:18 - Searching for track: the queen is dead the smiths
+2024-09-23 17:49:18 - Track search successful: The Queen Is Dead - 2011 Remaster
+2024-09-23 17:49:19 - Track added to playlist: The Queen Is Dead - 2011 Remaster by The Smiths
+2024-09-23 17:49:22 - Fetching the playlist
+2024-09-23 17:49:34 - Searching for track: girls just want to have fun bladee
+2024-09-23 17:49:34 - Track search successful: Girls just want to have fun
+2024-09-23 17:49:34 - Track added to playlist: Girls just want to have fun by Bladee
+2024-09-23 17:49:37 - Fetching the playlist
