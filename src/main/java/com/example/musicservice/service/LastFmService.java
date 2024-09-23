@@ -5,10 +5,10 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.util.UriComponentsBuilder;
-import reactor.core.publisher.Mono;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import reactor.core.publisher.Mono;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Map;
 
@@ -16,7 +16,6 @@ import java.util.Map;
 public class LastFmService {
 
     private static final Logger logger = LoggerFactory.getLogger(LastFmService.class);
-
     private static final String TRACK_SEARCH_METHOD = "track.search";
 
     @Value("${lastfm.api.key}")
@@ -35,39 +34,28 @@ public class LastFmService {
     }
 
     private String buildUrl(String method, Map<String, String> params) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(lastFmUrl);
-
-        builder.queryParam("method", method);
-        params.forEach(builder::queryParam);
-
-        builder.queryParam("api_key", apiKey)
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(lastFmUrl)
+                .queryParam("method", method)
+                .queryParam("api_key", apiKey)
                 .queryParam("format", apiFormat);
 
-        return builder.build().toUriString();
+        params.forEach(builder::queryParam);
+
+        return builder.toUriString();
     }
 
-    public Mono<String> makeApiCall(String method, Map<String, String> params) {
-        String url = buildUrl(method, params);
+    public Mono<Track> searchTrack(String trackName) {
+        Map<String, String> params = Map.of("track", trackName);
+
+        String url = buildUrl(TRACK_SEARCH_METHOD, params);
         logger.debug("Constructed URL: {}", url);
 
         return webClient.get()
                 .uri(url)
                 .retrieve()
                 .bodyToMono(String.class)
-                .doOnError(e -> logger.error("Error occurred during API call: {}", e.getMessage()))
-                .onErrorResume(e -> {
-                    logger.warn("Error occurred while calling Last.fm API: {}", e.getMessage());
-                    return Mono.just("Error with API call.");
-                });
-    }
-
-    public Mono<Track> searchTrack(String trackName) {
-        Map<String, String> params = Map.of("track", trackName);
-
-        return makeApiCall(TRACK_SEARCH_METHOD, params)
                 .map(response -> {
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONObject trackObject = jsonObject
+                    JSONObject trackObject = new JSONObject(response)
                             .getJSONObject("results")
                             .getJSONObject("trackmatches")
                             .getJSONArray("track")
@@ -77,10 +65,9 @@ public class LastFmService {
                     track.setName(trackObject.getString("name"));
                     track.setArtist(trackObject.getString("artist"));
                     track.setUrl(trackObject.getString("url"));
-
                     return track;
                 })
-                .doOnSuccess(track -> logger.info("Track search successful: {}", track.getName()))
-                .doOnError(e -> logger.error("Track search failed: {}", e.getMessage()));
+                .doOnSuccess(track -> logger.info("Found track: '{}' by '{}'", track.getName(), track.getArtist()))
+                .doOnError(e -> logger.error("Error while searching for track: {}", e.getMessage()));
     }
 }

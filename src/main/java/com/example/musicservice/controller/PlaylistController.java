@@ -8,14 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/ModifyPlaylist")
 public class PlaylistController {
 
     private static final Logger logger = LoggerFactory.getLogger(PlaylistController.class);
-
     private final PlaylistService playlistService;
 
     public PlaylistController(PlaylistService playlistService) {
@@ -25,34 +23,40 @@ public class PlaylistController {
     @GetMapping
     public ResponseEntity<List<Track>> getAllTracks() {
         logger.info("Fetching all tracks from the playlist");
-        List<Track> tracks = playlistService.getPlaylist();
-        return ResponseEntity.ok(tracks);
+        return ResponseEntity.ok(playlistService.getPlaylist());
     }
 
     @PostMapping
     public ResponseEntity<Track> addTrack(@RequestBody Track track) {
-        logger.info("Adding track to the playlist: {} by {}", track.getName(), track.getArtist());
-        Track savedTrack = playlistService.addTrackToPlaylist(track);
-        return ResponseEntity.ok(savedTrack);
+        logger.info("Adding track '{}' by '{}' to the playlist", track.getName(), track.getArtist());
+        return ResponseEntity.ok(playlistService.addTrackToPlaylist(track));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Track> updateTrack(@PathVariable Long id, @RequestBody Track updatedTrack) {
         logger.info("Updating track with id: {}", id);
-        Optional<Track> updated = playlistService.updateTrack(id, updatedTrack);
-        return updated.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+        return playlistService.updateTrack(id, updatedTrack)
+                .map(updated -> {
+                    logger.info("Updated track with id: {}", id);
+                    return ResponseEntity.ok(updated);
+                })
+                .orElseGet(() -> {
+                    logger.warn("Track with id '{}' not found", id);
+                    return ResponseEntity.notFound().build();
+                });
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTrack(@PathVariable Long id) {
-        logger.info("Deleting track with id: {}", id);
-        Optional<Track> track = playlistService.findTrackById(id);
-        if (track.isPresent()) {
-            playlistService.deleteTrack(id);
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Object> deleteTrack(@PathVariable Long id) {
+        return playlistService.findTrackById(id)
+                .map(track -> {
+                    playlistService.deleteTrack(id);
+                    logger.info("Deleted track with id: {}", id);
+                    return ResponseEntity.noContent().build();
+                })
+                .orElseGet(() -> {
+                    logger.warn("Track with id '{}' not found", id);
+                    return ResponseEntity.notFound().build();
+                });
     }
 }

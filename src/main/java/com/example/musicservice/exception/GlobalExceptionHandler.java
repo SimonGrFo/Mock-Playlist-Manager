@@ -16,12 +16,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<String> handleValidationException(ConstraintViolationException ex) {
         logger.error("Validation error: {}", ex.getMessage());
-        return ResponseEntity.badRequest().body("Validation failed: " + ex.getMessage());
+        return ResponseEntity.badRequest().body("Validation error: " + ex.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGenericException(Exception ex) {
-        logger.error("Internal error: {}", ex.getMessage());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An internal error occurred: " + ex.getMessage());
+        logger.error("Internal server error: {}", ex.getMessage(), ex);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Internal server error: " + ex.getMessage());
     }
 }
